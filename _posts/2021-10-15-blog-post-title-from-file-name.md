@@ -39,33 +39,35 @@ import ALookAtTheData as t
 from IPython import display
 %matplotlib inline
 
-# Load the CSV file inot a Pandas DataFrame where I can run some functions to tell me more about the data I was looking at
+# Load the CSV file into a Pandas DataFrame where I can run some functions to tell me more about the data I was looking at
 df = pd.read_csv('./nyc-rolling-sales.csv')
 
 # Look at the first few lines to make sure the data seems reasonable
 df.head()
 ```
-And the results from running this...
+
+#### The Results After Executing the Code Above Yields the Following
+
 ---
-<img src="https://github.com/hmelendez001/hmelendez001.github.io/blob/1b0238bd8244f5d3bcfabd5e403f2285c1b4a9a8/_posts/images/1PandasHead.jpg">
+<img src="images/1PandasHead.jpg">
 
 ---
 
-When we scroll to the right we see a little more detail. Notice that some of the sales prices are missing. We will need to take into account where data is missing and account for this in our analysis later.
+We see the first 5 rows of the data files and that there are 22 columns of data. When we scroll to the right we see a little more detail. Notice that some of the sales prices are missing. We will need to take missing data into account later in our analysis later.
 
 ---
 <img src="./images/2PandasHead.jpg">
 
 ---
 
-Now some code to tell me more about the actual data, not just the first few rows:
+Now some additional code to tell us more about the actual data, not just the first few rows:
 
 ```python
 # Tell me about the rows and columns 
 df.describe()
 ```
 
-The results from running describe give us the following:
+The results from running the describe function give us the following:
 
 ---
 <img src="./images/3PandasDescribe.jpg">

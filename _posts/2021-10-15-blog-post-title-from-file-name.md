@@ -28,7 +28,7 @@ I needed to make sure I knew enought about real estate and the factors that may 
 #### Step 2: Data Understanding
 In order to understand the dataset I was analyzing I needed a bird's eye view of the data or a general overview of what I was looking at without looking at every single row and column on the file. The Python Pandas package allowed me to get this high level overview. I loaded the CSV file I got from Kaggle into something Pandas calls a DataFrame and ran a describe function to get a high level overview of the data. I also generated some histograms to see the level of data wrangling and clean up I might have to do across the various columns of the file. This including possibly dropping a column that might be completely empty or a row that had nothing in it. As well as imputing missing data, which is like filling in the missing blanks where it makes logical sense. It is important to do some "sanity checks" here as well. You want to make sure you have data that "makes sense", e.g. not an empty file, not a file with too little data, not a bunch of empty columns, or data that is inconsistent or not what you thought you had. Imagine if somehow the file I downloaded was Boston suburbs real estate data or stock prices for an obscure company. We want to level set here and start on the right foot.
 
-#### Some Python Code
+#### Now Some Python Code to Understand Our Data
 
 ```python
 # First initialize my environment with things I will need to run my code

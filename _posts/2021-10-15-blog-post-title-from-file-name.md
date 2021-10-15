@@ -47,14 +47,14 @@ df.head()
 ```
 And the results from running this...
 ---
-<img src="images/1PandasHead.jpg">
+<img src="./images/1PandasHead.jpg">
 
 ---
 
 When we scroll to the right we see a little more detail. Notice that some of the sales prices are missing. We will need to take into account where data is missing and account for this in our analysis later.
 
 ---
-<img src="images/2PandasHead.jpg">
+<img src="./images/2PandasHead.jpg">
 
 ---
 
@@ -68,7 +68,7 @@ df.describe()
 The results from running describe give us the following:
 
 ---
-<img src="images/3PandasDescribe.jpg">
+<img src="./images/3PandasDescribe.jpg">
 
 ---
 #### Step 3: Data Preparation

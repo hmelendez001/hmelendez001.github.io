@@ -10,7 +10,7 @@ I will attempt to answer the following 3 questions:
 
 ---
 
-### As per the CRISP-DM or Cross-Industry Stnadard Process for Data Mining, I followed these 6 steps:
+### As per the CRISP-DM or Cross-Industry Standard Process for Data Mining, I followed these 6 steps:
 
 #### Step 1: Business Understanding
 I needed to make sure I knew enought about real estate and the factors that may or may not affect sales as well as a general understanding of the boroughs or sections that make up the city of New York as well as some of the neighborhoods within those boroughs. Typically people not familiar with New York City know more about the borough of Manhattan from movies and TV, but have very little knowledge of the surrounding boroughs. Perhaps they know more about Brooklyn more recently, but probably have very little awareness of boroughs like the Bronx, Queens, or Staten Island.

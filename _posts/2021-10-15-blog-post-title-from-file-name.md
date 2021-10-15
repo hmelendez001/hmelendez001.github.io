@@ -47,7 +47,7 @@ df.head()
 ```
 And the results from running this...
 ---
-<img src="./images/1PandasHead.jpg">
+<img src="https://github.com/hmelendez001/hmelendez001.github.io/blob/1b0238bd8244f5d3bcfabd5e403f2285c1b4a9a8/_posts/images/1PandasHead.jpg">
 
 ---
 

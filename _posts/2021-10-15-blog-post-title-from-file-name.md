@@ -4,9 +4,9 @@ Project 1 of the Udacity Data Scientist Nanodegree program involves a CRISP-DM a
 
 I will attempt to answer the following 3 questions:
 
-1. Question 1?
-2. Question 2?
-3. Question 3?
+1. Does Manhattan sales trend differently than other boroughs, and if so, how?
+2. Are older buildings selling better than newer buildings based on location?
+3. Are bigger spaces more likely to sell in any particular neighborhood?
 
 ---
 

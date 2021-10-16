@@ -14,7 +14,7 @@ The NYC Real Estate Data I found on Kaggle.com involves sales of properties duri
 
 I will initially attempt to answer the following 3 questions:
 
-1. Does Manhattan sales trend differently than other boroughs, and if so, how?
+1. Does Manhattan or the borough in general have any effect in predicting the sales price of a property?
 2. Are older buildings selling better than newer buildings based on location, given that most older buildings are rent controlled in New York?
 3. Is there a correlation in sales with time of year and square footage for any particular borough? For exmample, are Manhattan apartments selling faster in the winter or are lofts in Brooklyn in higher demand during the summer months?
 

@@ -67,6 +67,18 @@ We did things like map borough numbers to actual borough names so we could plot 
 Also, a valuable tool was our heat map which gave us numeric correlations across our data. This way we could see what numbers really correlated to sales price and what were insignificant. Surprisingly time of year or season had very little or close to 0 correlation which helped with question 3 in our evaluation. We later further proved this by adding and removing from the model input and seeing no variance in the result.
 
 ---
+<img src="https://static01.nyt.com/images/2020/05/25/opinion/25schlichting1/merlin_158221335_9fafad3d-fa46-4c24-bbd3-b870c005a478-superJumbo.jpg?quality=75&auto=webp">
+Source: NY Times New York City Doesn’t Have to Suffer This Summer https://www.nytimes.com/2020/05/25/opinion/new-york-summer-coronavirus.html
+
+---
+
+No, not a heatmap like a hot summer in the Astoria Pool in Queens, NY. The type of heatmap graphic used by data scientist to see numbers that are color coded to show high or low correlations.
+
+--
+<img src="https://i2.wp.com/indianaiproduction.com/wp-content/uploads/2019/09/24-seaborn-heatmap-correlation.png?resize=768%2C473&ssl=1">
+Source: https://indianaiproduction.com/seaborn-heatmap/
+
+---
 ### Step 4: Modeling
 For our modeling step, I decided on taking my numeric inputs from my analysis: things like borough, year the property was built, and the tax category of the property at sale time to do a linear regression to sale price. Meaning, whittle down the data to the factors that most affect sale price predictability. Along the way I realized that inputs like Zip Code, Block, and Lot were simply redundant in terms of location which I was interested in a by Borough analysis in the first place. So those redundant location factors were dropped from the model. Also, factors that I found had no correlation to the sale price or skewed the results were also dropped as inputs. Factors like total units, gross square feet, or land square feet either threw our r-square result into a negative number, meaning invalidated the model, or had no effect in moving the result. 
 

@@ -22,10 +22,23 @@ I will initially attempt to answer the following 3 questions:
 
 ### As per the CRISP-DM or Cross-Industry Standard Process for Data Mining, I followed these 6 steps:
 
-#### Step 1: Business Understanding
-I needed to make sure I knew enought about real estate and the factors that may affect sales. Also, I needed a general understanding of the boroughs or sections that make up the city of New York as well as some of the neighborhoods within those boroughs. Typically people not familiar with New York City know more about the borough of Manhattan from movies and TV, but have very little knowledge of the surrounding boroughs. Perhaps they know more about Brooklyn more recently, but probably have very little awareness of boroughs like the Bronx, Queens, or Staten Island. The first time my sister visited me in lower Manhanttan she was surprised to see how "nice" Battery Park City appeared. She noted that it was nothing like "the mean streets of New York" she had seen in the movies. Her views changed when we took the subway up to 42nd street and saw the sights there. "This is more like what I thought Manhattan would look like!" she said.
+### Step 1: Business Understanding
+I needed to make sure I knew enought about real estate and the factors that may affect sales. Also, I needed a general understanding of the boroughs or sections that make up the city of New York as well as some of the neighborhoods within those boroughs. Typically people not familiar with New York City know more about the borough of Manhattan from movies and TV, but have very little knowledge of the surrounding boroughs. Perhaps they know more about Brooklyn more recently, but probably have very little awareness of boroughs like the Bronx, Queens, or Staten Island. 
 
-#### Step 2: Data Understanding
+---
+<img src="https://www.christiesrealestate.com/blog/wp-content/uploads/2018/11/Battery-Park-City-street-banner.jpg">
+Source: Battery Park City: Suburban Living in the Heart of New York City - Christie's International Real Estate https://www.christiesrealestate.com/blog/battery-park-city-suburban-living-in-the-heart-of-new-york-city/
+
+---
+The first time my sister visited me in lower Manhanttan she was surprised to see how "nice" Battery Park City appeared. She noted that it was nothing like "the mean streets of New York" she had seen in the movies. Her views changed when we took the subway up to 42nd street and saw the sights there. "This is more like what I thought New York City would look like!" she said.
+
+---
+<img src="https://i.insider.com/58dbdc86dd0895d16f8b4700?width=700">
+Source: Business Insider https://www.businessinsider.com/facts-about-times-square-2017-3
+
+---
+
+### Step 2: Data Understanding **and** Step 3: Data Preparation
 In order to understand the dataset I was analyzing I needed a bird's eye view of the data or a general overview of what I was looking at without looking at every single row and column on the file. The Python Pandas package allowed me to get this high level overview. I loaded the CSV file I got from Kaggle into something Pandas calls a DataFrame and ran a describe function to get a high level overview of the data. I also generated some histograms to see the level of data wrangling and clean up I might have to do across the various columns of the file. This including possibly dropping a column that might be completely empty or a row that had nothing in it. As well as imputing missing data, which is like filling in the missing blanks where it makes logical sense. It is important to do some "sanity checks" here as well. You want to make sure you have data that "makes sense", e.g. not an empty file, not a file with too little data, not a bunch of empty columns, or data that is inconsistent or not what you thought you had. Imagine if somehow the file I downloaded was Boston suburbs real estate data or stock prices for an obscure company. We want to level set here and start on the right foot.
 
 #### Now Some Python Code to Understand Our Data
@@ -46,41 +59,41 @@ df = pd.read_csv('./nyc-rolling-sales.csv')
 df.head()
 ```
 
-#### The Results After Executing the Code Above Yields the Following
+#### But Enough About Code
+Rather than dive into the technical details let's discuss what was involved in the analysis. Notice that we combined Step 2: Data Understanding **and** Step 3: Data Preparation. In data science they say this is about 80% of the work: wrangling the data. I found the two steps to be cyclical. The more I needed to understand the data, the more I had to clean it up and prepare it to analyze it.
+
+We did things like map borough numbers to actual borough names so we could plot some bar graphs for our analysis.
+
+Also, a valuable tool was our heat map which gave us numeric correlations across our data. This way we could see what numbers really correlated to sales price and what were insignificant. Surprisingly time of year or season had very little or close to 0 correlation which helped with question 3 in our evaluation. We later further proved this by adding and removing from the model input and seeing no variance in the result.
 
 ---
-<img src="images/1PandasHead.jpg">
+### Step 4: Modeling
+For our modeling step, I decided on taking my numeric inputs from my analysis: things like borough, year the property was built, and the tax category of the property at sale time to do a linear regression to sale price. Meaning, whittle down the data to the factors that most affect sale price predictability. Along the way I realized that inputs like Zip Code, Block, and Lot were simply redundant in terms of location which I was interested in a by Borough analysis in the first place. So those redundant location factors were dropped from the model. Also, factors that I found had no correlation to the sale price or skewed the results were also dropped as inputs. Factors like total units, gross square feet, or land square feet either threw our r-square result into a negative number, meaning invalidated the model, or had no effect in moving the result. 
+
+### Step 5: Evaluation -- A summary of our Results
+Some results were as expected, while others were a little surprising. Below are the results:
+
+---
+<img src="http://www.manhattanrealestate.com/wp-content/uploads/2016/08/MRE-night1-1.jpg">
+Source: http://www.manhattanrealestate.com/
 
 ---
 
-We see the first 5 rows of the data files and that there are 22 columns of data. When we scroll to the right we see a little more detail. Notice that some of the sales prices are missing. We will need to take missing data into account later in our analysis later.
+| # | Question | Results |
+| :--- | :--- | :--- |
+| 1 | Does Manhattan or the borough in general have any effect in predicting the sales price of a property? | **YES** it impacts the price by a 35% difference in r-square value. Although Queens and Brooklyn have more sales (more than 50% of the sales together), Manhattan has the higher priced sales (over 50% as seens above). |
+| 2 | Are older buildings selling better than newer buildings based on location? | **NO** not really, the impact is only about a 4% difference in r-square value. This was a little surprising given older buildings are typically rent-controlled. |
+| 3 | Is there a correlation in sales with time of year and square footage for any particular borough? For exmample, are Manhattan apartments selling faster in the winter or are lofts in Brooklyn in higher demand during the summer months? | **NO** none at all in fact. Neither SALE DATE nor SALE SEASON NUMBER made any difference in our r-square value model. |
+
+### Step 6: Deployment
+This step is more about the results you are reading here in my blog as well as the Jupyter Notebook with the actual code and detailed analsysis. This can be found here on my GitHub project repository: https://github.com/hmelendez001/Project1-Udacity-Data-Scientist
+
+In conclusion, this has been a rewarding experience. I found that by writing this blog in a manner that was easy for anyone to understand it gave me a deeper understanding of what I had to do in my analysis, some false starts or bad assumptions were corrected, some lessons learned, and some results that were not expected.
+
+Now I just want to eat a hot dog from Gray's Papaya off 72nd and Broadway in the Upper West Side of Manhattan, greatest hot dog on earth. :)
 
 ---
-<img src="./images/2PandasHead.jpg">
+<img src="https://pyxis.nymag.com/v1/imgs/5b5/539/58859f38c2a9e395da7ceaf223ac1eea13-grays-papaya-01.rsocial.w1200.jpg">
+Source: nymag.com The best hot dogs on the Upper West Side at https://nymag.com/listings/restaurant/grays-papaya/
 
 ---
-
-Now some additional code to tell us more about the actual data, not just the first few rows:
-
-```python
-# Tell me about the rows and columns 
-df.describe()
-```
-
-The results from running the describe function give us the following:
-
----
-<img src="./images/3PandasDescribe.jpg">
-
----
-#### Step 3: Data Preparation
-TODO
-
-#### Step 4: Modeling
-TODO
-
-#### Step 5: Evaluation
-TODO
-
-#### Step 6: Deployment
-TODO

@@ -93,7 +93,7 @@ Source: http://www.manhattanrealestate.com/
 
 | # | Question | Results |
 | :--- | :--- | :--- |
-| 1 | Does Manhattan or the borough in general have any effect in predicting the sales price of a property? | **YES** it impacts the price by a 35% difference in r-square value. Although Queens and Brooklyn have more sales (more than 50% of the sales together), Manhattan has the higher priced sales (over 50% as seens above). |
+| 1 | Does Manhattan or the borough in general have any effect in predicting the sales price of a property? | **YES** it impacts the price by a 35% difference in r-square value. Although Queens and Brooklyn have more sales (more than 50% of the sales together), Manhattan has the higher priced sales (over 50%). |
 | 2 | Are older buildings selling better than newer buildings based on location? | **NO** not really, the impact is only about a 4% difference in r-square value. This was a little surprising given older buildings are typically rent-controlled. |
 | 3 | Is there a correlation in sales with time of year and square footage for any particular borough? For exmample, are Manhattan apartments selling faster in the winter or are lofts in Brooklyn in higher demand during the summer months? | **NO** none at all in fact. Neither SALE DATE nor SALE SEASON NUMBER made any difference in our r-square value model. |
 

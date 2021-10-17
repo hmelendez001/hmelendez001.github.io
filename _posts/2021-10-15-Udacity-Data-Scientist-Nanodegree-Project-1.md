@@ -18,6 +18,9 @@ I will initially attempt to answer the following 3 questions:
 2. Are older buildings selling better than newer buildings based on location, given that most older buildings are rent controlled in New York?
 3. Is there a correlation in sales with time of year and square footage for any particular borough? For example, are Manhattan apartments selling faster in the winter or are lofts in Brooklyn in higher demand during the summer months?
 
+> “The world is one big data problem.” 
+> – by Andrew McAfee, co-director of the MIT Initiative
+
 ---
 
 ### As per the CRISP-DM or Cross-Industry Standard Process for Data Mining, I followed these 6 steps:
@@ -74,13 +77,20 @@ Source: NY Times New York City Doesn’t Have to Suffer This Summer https://www.
 
 No, not a heatmap like a hot summer in the Astoria Pool in Queens, NY. The type of heatmap graphic used by data scientist to see numbers that are color coded to show high or low correlations.
 
---
+---
 <img src="https://i2.wp.com/indianaiproduction.com/wp-content/uploads/2019/09/24-seaborn-heatmap-correlation.png?resize=768%2C473&ssl=1">
 Source: https://indianaiproduction.com/seaborn-heatmap/
 
 ---
 ### Step 4: Modeling
-For our modeling step, I decided on taking my numeric inputs from my analysis: things like borough, year the property was built, and the tax category of the property at sale time to do a linear regression to sale price. Meaning, whittle down the data to the factors that most affect sale price predictability. Along the way I realized that inputs like Zip Code, Block, and Lot were simply redundant in terms of location which I was interested in a by Borough analysis in the first place. So those redundant location factors were dropped from the model. Also, factors that I found had no correlation to the sale price or skewed the results were also dropped as inputs. Factors like total units, gross square feet, or land square feet either skewed our r-square result into a negative number, meaning invalidated the model, or had no effect in moving the result. 
+For our modeling step, I decided on taking my numeric inputs from my analysis: things like borough, year the property was built, and the tax category of the property at sale time to do a linear regression to sale price. Meaning, whittle down the data to the factors that most affect sale price predictability. Linear regression is a machine learning model that employs a best linear fit, which is fancy talk for take a bunch of data points with an X and Y axis, now try to draw a straight line that most closely lays over those points. In the diagram below you have two examples of a linear fit or red line that fits along all those points. Notice the thing they are calling r^2 or R-Squared. This value is important in linear modeling because it tells you how well your line fits and ultimately how well your model is performing. Notice the second diagram fits better along those points and thus has a higher R-square (called R-Sq on the legend to the right of the plot).
+
+---
+<img src="https://miro.medium.com/max/1400/1*rPfgVkqGYUVlQgwGIQ0Y5Q.png">
+Source: miro.medium.com at https://medium.com/@erika.dauria/looking-at-r-squared-721252709098
+
+---
+Along the way I realized that inputs like Zip Code, Block, and Lot were simply redundant in terms of location which I was interested in a by Borough analysis in the first place. So those redundant location factors were dropped from the model. Also, factors that I found had no correlation to the sale price or skewed the results were also dropped as inputs. Factors like total units, gross square feet, or land square feet either skewed our R-square result into a negative number, meaning invalidated the model, or had no effect in moving the result. 
 
 ### Step 5: Evaluation -- A summary of our Results
 Some results were as expected, while others were a little surprising. Below are the results:
@@ -100,7 +110,7 @@ Source: http://www.manhattanrealestate.com/
 The results for question 2 were surprising enough to make us pause and re-evaluate our data. Perhaps we were looking at newer buildings that went up post-WWII. But a second look at the counts by YEAR BUILT confirmed this was not the case. We were in fact looking at a lot of buildings that went up early 1900s.
 
 ### Step 6: Deployment
-This step is more about the results you are reading here in my blog as well as the Jupyter Notebook with the actual code and detailed analsysis. This can be found here on my GitHub project repository: https://github.com/hmelendez001/Project1-Udacity-Data-Scientist
+This step is more about the results you are reading here in my blog as well as the Jupyter Notebook with the actual code and detailed analysis. This can be found here on my GitHub project repository: https://github.com/hmelendez001/Project1-Udacity-Data-Scientist
 
 In conclusion, this has been a rewarding experience. I found that by writing this blog in a manner that was easy for anyone to understand it gave me a deeper understanding of what I had to do in my analysis, some false starts or bad assumptions were corrected, some lessons learned, and some results that were not expected.
 

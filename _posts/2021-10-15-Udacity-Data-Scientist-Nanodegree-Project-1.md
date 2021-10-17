@@ -97,6 +97,8 @@ Source: http://www.manhattanrealestate.com/
 | 2 | Are older buildings selling better than newer buildings based on location? | **NO** not really, the impact is only about a 4% difference in r-square value. This was a little surprising given the older buildings are typically rent-controlled. But when I went back at looked at the distribution of YEAR |
 | 3 | Is there a correlation in sales with time of year and square footage for any particular borough? For example, are Manhattan apartments selling faster in the winter or are lofts in Brooklyn in higher demand during the summer months? | **NO** none at all in fact. Neither SALE DATE nor SALE SEASON NUMBER made any difference in our r-square value model. |
 
+The results for question 2 were surprising enough to make us pause and re-evaluate our data. Perhaps we were looking at newer buildings that went up post-WWII. But a second look at the counts by YEAR BUILT confirmed this was not the case. We were in fact looking at a lot of buildings that went up early 1900s.
+
 ### Step 6: Deployment
 This step is more about the results you are reading here in my blog as well as the Jupyter Notebook with the actual code and detailed analsysis. This can be found here on my GitHub project repository: https://github.com/hmelendez001/Project1-Udacity-Data-Scientist
 

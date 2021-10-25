@@ -78,7 +78,7 @@ Source: NY Times New York City Doesn’t Have to Suffer This Summer https://www.
 No, not a heatmap like a hot summer in the Astoria Pool in Queens, NY. The type of heatmap graphic used by data scientist to see numbers that are color coded to show high or low correlations.
 
 ---
-<img src="https://github.com/hmelendez001/hmelendez001.github.io/blob/main/images/4CorrelationHeatmap.jpg">
+<img src="https://github.com/hmelendez001/hmelendez001.github.io/blob/4b11afbcd9915ae23944f5e253ea37dba1966278/images/4CorrelationHeatmap.jpg">
 
 ---
 ### Step 4: Modeling

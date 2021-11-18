@@ -1,4 +1,4 @@
-## Udacity Data Scientist Nanodegree: Project 1
+## Udacity Data Scientist Nanodegree: Project 2
 
 As part of my Udacity Data Scientist Nanodegree program, my second project involved the development of a web application displaying a Disaster Response Pipeline, showcasing the following Data Science and Software Engineering Best Practices:
 

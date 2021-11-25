@@ -1,6 +1,12 @@
 ## Udacity Data Scientist Nanodegree: Project 2
 
-As part of my Udacity Data Scientist Nanodegree program, my second project involved the development of a web application displaying a Disaster Response Pipeline, showcasing the following Data Science and Software Engineering Best Practices:
+As part of the udacity.com Data Scientist nanodegree, this is project two of the program. Following a disaster, there are millions of tweets, news alerts, or social media and online messages that are generated. During this critical time, organizations are overwhelmed with data and they need to filter out what is pertinent information from what is just noise. One response organization might be interested in information about water needs, or roads, or medical supplies, etc. But is someone just commenting on water or urgently asking for clean water needs without using the word water? 
+
+There is not enough time for a person to parse through so much data in time for the correct organization to respond effectively. One in every 1,000 messages might actually be important.
+
+Figure Eight, a company specializing in AI data solutions, has provided real social media and online messages that were generated in an actual emergency that will be used for this project.
+
+This project involves a Disaster Response Pipeline dashboard web application showcasing the following Data Science and Software Engineering Best Practices:
 
 * Github and Code Quality including a GitHub repository along with code comments, docstring in each function, class, or method, unit tests, and logical functions and PEP8 style guideline conventions
 * ETL or Extract Transform Load data setup of a clean dataset

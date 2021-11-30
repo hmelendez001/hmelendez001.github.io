@@ -25,17 +25,17 @@ Source: Getty Images by Juan Sebastian Cuellar Rodriguez / EyeEm
 
 ---
 ### What Exactly is This Project?
-This project was a full stack end to end development effort. I took two raw CSV files, one containing the raw messages and corresponding English translations, and the second CSV file containing the categories that Figure Eight originally generated. Remember, Machine Learning is about "training" your model or telling it "here is part of the data with responses for you to 'learn' and now take the remaining data set and test the effectiveness of the model proposed." And then taking the model we developed and evaluated to showcase in a web application that allows users to input messages that allow the model to predict what emergency response categories the message would trigger, if any. There were 3 major Python scripts that were developed as described below.
+This project was a full stack end to end development effort. I took two raw CSV files, one containing the raw messages and corresponding English translations, and the second CSV file containing the categories that Figure Eight originally generated. Remember, Machine Learning is about "training" your model or telling it "here are the questions **and** answers for you to 'learn.' Use part of the data to 'lean' and take the remaining data to test how effective your 'learning' was." I took the model I developed and evaluated to showcase it in a web application. This web application allows users to input text messages that allow the model to predict what emergency response categories the message would trigger, if any. There were 3 major Python scripts that were developed as described below.
 
 <img src='https://media.gettyimages.com/photos/rotating-mesocyclone-storm-works-its-way-across-the-great-plains-of-picture-id614939260?s=2048x2048'>
 Source: Getty Images by John Finney
 
 ---
 #### ETL Pipeline
-This was a separate Python script to simply load the data files into a merged Pandas data frame, clean the data as there were duplicates and it was not in a format convenient for a machine learning model, and finally load it into a SQL Lite database from which our Text Processing and Machine Learning pipeline could read from. We also wanted to make sure that all our functions were properly documented using Python docstring comments and that we properly refactored any code to keep the logic clean. Also, by breaking out or code into separate Pipelines we learned that we could better scale our solutions. By running logic in Pipelines, we could run simultaneous code or scale out based on data size or demands.
+This was a separate Python script to simply load the data files into a merged Pandas data frame. I then cleaned the data as there were duplicates and it was not in a format convenient for a machine learning model. Finally, the ETL script loaded this data into a SQL Lite database from which our Text Processing and Machine Learning pipeline could read from. We also wanted to make sure that all our functions were properly documented using Python docstring comments and that we properly refactored any code to keep the logic clean. Also, by breaking out or code into separate Pipelines we learned that we could better scale our solutions. Running logic in Pipelines, we could run simultaneous code or scale out based on data size or demands.
 
 #### Text Processing and Machine Learning Pipeline
-This was a second Python script that took the cleaned-up data from the SQL Lite database that our ETL Pipeline processed and tested, evaluated, and persisted our model for use by our UI web application dashboard.
+This was a second Python script that took the cleaned-up data from the SQL Lite database that our ETL Pipeline processed. It then tested, evaluated, and persisted our model for use by our UI web application dashboard.
 
 <img src='https://www.cxtoday.com/wp-content/uploads/2021/06/Natural-Language-Processing-1.png'>
 Source: What is Natural Language Processing (NLP)? by Anwesha Roy from https://www.cxtoday.com/contact-centre/what-is-natural-language-processing-nlp/
@@ -49,13 +49,13 @@ Another interesting functionality NLTK offers is the ability to break down text 
 Source: Jeremy Renner Faked Hawkeye's Death In The Avengers To Ask Filmmakers To Kill Him Off from https://comicbook.com/marvel/news/jeremy-renner-faked-hawkeye-s-death-in-the-avengers-to-ask-filmm/
 
 ---
-Deep learning and neural networks were something we covered but did not include in our final model. This involves the type of word association our brain makes when it comes to "guessing" or filling in the blanks for words that have an association in a given context. For example, take the sentences "I love hot \__\__ in the morning" or "I cannot function in the morning until I have a cup of \__\__." Our brain knows how to limit the possible choices down to maybe "tea" but more likely "coffee." We can closer associate "tea" and "coffee" here and know that in this other example or "plane" the two do **not** have as close of an association: "I like to read the \__\__ leaves in my cup." When you see words like January, February, March ... our brains are immediately thinking "months" and I know the relationship and order. We can teach machines the same thing to better understand language and context. This is especially useful in image recognition for a machine to know the type of features to expect in identifying a human face on a pedestrian versus an automobile or road sign. Pretty neat, huh?
+Deep learning and neural networks were something we covered but did not include in our final model. This involves the type of word association our brain makes when it comes to "guessing" or filling in the blanks for words that have an association in a given context. For example, take the sentences "I love hot \__\__ in the morning" or "I cannot function in the morning until I have a cup of \__\__." Our brain knows how to limit the possible choices down to maybe "tea" but more likely "coffee." We can closer associate "tea" and "coffee" here. In this example the words closely associate. But in this other example or "plane" the two do **not** have as close of an association: "I like to read the \__\__ leaves in my cup." When you see words like January, February, March ... our brains are immediately thinking "months" and I know the relationship and order. We can teach machines the same thing to better understand language and context. This is especially useful in image recognition for a machine to know the type of features to expect in identifying a human face on a pedestrian versus an automobile or road sign. Pretty neat, huh?
 
 <img src='https://cdn-gcp.marutitech.com/wp-media/2016/10/a6c3baa2-8-problems-that-can-be-easily-solved-by-machine-learning-1.jpg'>
 Source: 9 Real-World Problems that can be Solved by Machine Learning from https://marutitech.com/problems-solved-machine-learning/
 
 ---
-We split our input data into a test dataset for learning and a second dataset to evaluate the effectiveness of our model by generating a report that recorded the model's resulting precision and recall, from [Wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall):
+We split our input data into a test dataset for learning and a second dataset to evaluate the effectiveness of our model. Model effectiveness is shown by generating a report that recorded the model's resulting precision and recall. These terms are best defined in [Wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall):
 
 > **Precision** (also called positive predictive value) is the fraction of relevant instances among the retrieved instances, while **recall** (also known as sensitivity) is the fraction of relevant instances that were retrieved. Both precision and recall are therefore based on relevance.
 > 
@@ -71,18 +71,18 @@ I also reported the model's F-score, again best defined by [Wikipedia](https://e
 
 > In statistical analysis of binary classification, the **F-score** or F-measure is a measure of a test's accuracy. It is calculated from the precision and recall of the test, where the precision is the number of true positive results divided by the number of all positive results, including those not identified correctly, and the recall is the number of true positive results divided by the number of all samples that should have been identified as positive. Precision is also known as positive predictive value, and recall is also known as sensitivity in diagnostic binary classification.
 > 
-> The F1 score is the harmonic mean of the precision and recall. The more generic {\displaystyle F_{\beta }}F_{\beta } score applies additional weights, valuing one of precision or recall more than the other.
+> The F1 score is the harmonic mean of the precision and recall. The more generic Fβ score applies additional weights, valuing one of precision or recall more than the other.
 
-And using "pickle" we were able to store our model in a way that could be read and used by others, mainly our web application.
+And using a Python module known as "pickle" we were able to store our model in a file that could be read and used by others, mainly by our web application.
 
 <img src='https://media.gettyimages.com/photos/hurricane-winds-knock-down-an-oak-tree-picture-id847689834?s=2048x2048'>
 Source: Getty Images by John Coletti
 
 ---
 #### Web Application Dashboard
-The 3rd and final major Python script for this project involved the resulting web application dashboard. I used a framework called Flask that allows us to use Python to generate HTML5 as well as Bootstrap 5.0 for our stylesheets and Javascript code to generate the reactive navigation and visualization pages. I also used Gunicorn to deploy the web application to Heroku, a cloud-based hosting environment. The Heroku hosted web application can be found [HERE](https://helderdisasterdash.herokuapp.com/).
+The 3rd and final major Python script for this project involved the resulting web application dashboard. I used a framework called Flask that allowed us to use Python to generate HTML5; as well as Bootstrap 5.0 for our stylesheets and Javascript code to generate the reactive navigation and visualization pages. I also used Gunicorn to deploy the web application to Heroku, a cloud-based hosting environment. The Heroku hosted web application can be found [HERE](https://helderdisasterdash.herokuapp.com/).
 
-The web application plots two visualization to inform the user of the underlying model training and test data. It also allows the user to input any message to see how the machine learning model "categorizes" the message or returns what emergency service category or categories the message would be flagged for. Again, keep in mind the model is currently optimized at only about 60% or so of accuracy.
+The web application plots two visualization to show the user the makeup of the underlying model training and test data. It also allows the user to input any text message to see how the machine learning model "categorizes" the message or returns what emergency service category or categories the message would be flagged for. Again, keep in mind the model is currently optimized at only about 60% or so of accuracy.
 
 <img src='https://media.gettyimages.com/photos/flood-picture-id184878691?s=2048x2048'>
 Source: Getty Images by gdagys

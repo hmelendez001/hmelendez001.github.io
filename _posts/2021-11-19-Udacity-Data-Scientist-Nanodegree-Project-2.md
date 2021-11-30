@@ -14,7 +14,7 @@ Figure Eight, a company specializing in AI data solutions, has provided real soc
 
 This project involves a Disaster Response Pipeline dashboard web application showcasing the following Data Science and Software Engineering Best Practices:
 
-* Github and Code Quality including a GitHub repository along with code comments, docstring in each function, class, or method, unit tests, and logical functions and PEP8 style guideline conventions
+* GitHub and Code Quality including a GitHub repository along with code comments, docstring in each function, class, or method, unit tests, and logical functions and PEP8 style guideline conventions
 * ETL or Extract Transform Load data setup of a clean dataset
 * Machine Learning including NLP techniques to process text data and the proper use of pipelines and grid search, training vs. test data, and model evaluation
 * Deployment of our web application showing our Disaster Response Pipeline visualizations

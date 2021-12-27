@@ -33,27 +33,27 @@ This project was all based on a Jupyter Notebook and the resulting analysis. As 
 ```
 In the first part of our project we do the analysis of the IBM user article interaction data. We clean up some duplicates and answer some initial questions like how many unique articles and users we have in the data or the number of interactions recorded.
 
-<img src='../images/Project3ScreenShotPart1.png'/>
+<img src='https://user-images.githubusercontent.com/26253570/147491507-02b85e8b-85d1-45c5-83e4-504cfd385503.png'/>
 ---
 
 In the second part we implement Rank-Based recommendations to answer what are the top 10 articles or the top 20 articles, etc.
 
-<img src='../images/Project3ScreenShotPart2.png'/>
+<img src='https://user-images.githubusercontent.com/26253570/147491516-39cf6b11-1fec-46c2-a945-6d32f5d391ce.png'/>
 ---
 
 Part 3 gets more interesting. We develop User-User Based Collaborative Filtering to find similar users based on articles they have interacted with. This is more like the Netflix recommendation engine: other users that have interacted with this article have also interacted with these other articles that you have not seen yet. Then we improve the consistency of our engine. Instead of arbitrarily choosing when we obtain users who are all the same closeness to a given user, we choose the users that have the most total article interactions before choosing those with fewer article interactions.
 
-<img src='../images/Project3ScreenShotPart3.png'/>
+<img src='https://user-images.githubusercontent.com/26253570/147491530-74169ba5-b50b-4d44-83b5-79fba51c75a5.png'/>
 ---
 
 And then in part 4 we implement Content Based Recommendations. Based on the title of our articles we select the top terms in the title and create content likeness based on the appearance of these terms. Then we use this in a matrix of users and content to further match users. In order to get the top terms we just used a word cloud but concluded that we could have also gotten top terms programmatically to better determine the number of terms to best use. This would have been better in the end than arbitrarily choosing the top 10, 15, or 20 terms, but for our purposes we proved our point on being able to create Content Based Recommendations. Also, we had one false start here. We started with the dataset that included article document full name and description, but quickly realized this data had over half the content we needed missing, so instead we went with just the article titles, good enough for our analysis.
 
-<img src='../images/Project3ScreenShotPart4.png'/>
+<img src='https://user-images.githubusercontent.com/26253570/147491528-424a81d4-9570-4f73-a373-847816b41bc3.png'/>
 ---
 
 Finally, the last part, part 5 involved Matrix Factorization, or specifically Singular Value Decomposition or SVD. Now we're cooking on a cool recommendation engine the likes of Netflix and Amazon and all the big e-retailers. This involved matrix math with eigen values and eigen vectors. We also addressed the Cold Start Problem. This is the common recommendation engine problem: what to do with a new user who has no history or new content (a new movie, a new product, or in our case a new IBM article) that has no history. One way is to eliminate those for the purpose of using pure SVD, but this is where Funk SVD shines because it addresses exactly: SVD with missing values.
 
-<img src='../images/Project3ScreenShotPart5.png'/>
+<img src='https://user-images.githubusercontent.com/26253570/147491529-ee216a14-5e10-4277-8e15-60fa77b50759.png'/>
 ---
 
 ### Conclusion

@@ -21,3 +21,10 @@ For this project, I built a stock price predictor that reads historical daily tr
 - Adjusted Close: the closing price adjusted for stock splits and dividends
 
 For historical test data we only need to predict the Adjusted Close price, however, for future dates we need to predict the inputs as well.
+
+![Trading Floor Broker](https://image.cnbcfm.com/api/v1/image/106427063-1583430452588gettyimages-1205293048.jpeg?v=1583430647&w=740&h=416)
+##### Source: "SPACs break 2020 record in just 3 months, but the red-hot industry faces challenges ahea" by Yun Li at https://www.cnbc.com/2021/03/19/spacs-break-2020-record-in-just-3-months.html
+###### Traders work during the opening bell at the New York Stock Exchange (NYSE) on March 5, 2020 at Wall Street in New York City. (Photo by Johannes EISELE / AFP) (Photo by JOHANNES EISELE/AFP via Getty Images)
+###### Photo by Johannes Eisele | AFP | Getty Images
+
+---

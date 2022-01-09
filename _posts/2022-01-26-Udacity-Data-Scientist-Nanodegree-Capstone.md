@@ -137,10 +137,122 @@ So let's update our status table...
 
 ...and even after I re-ran my model with this newfound knowledge, I concluded that with less work, i.e. no economic indicator data, we can do a better job of predicting future stock value. Our linegar regression model was a good start using just the historical data provided by Yahoo! Finance on the stock symbol.
 
+![NASDAQ Composite Scores](https://static5.businessinsider.com/image/5e050b69855cc259ee177af4-2000/rtx2q58v.jpg)
+##### Source: "The Nasdaq soars past 9,000 for the first time ever, fueled by Amazon's holiday sales boom" by Ben Winck at https://markets.businessinsider.com/news/commodities/nasdaq-composite-hits-9000-first-time-amazon-sales-santa-rally-2019-12 Reuters/Shannon Stapleton
+
+---
 ### Implementation - The Stock Predictor
 First, I created some helper functions and classes that would be needed for validating and pre-processing the inputs. I also included some unit testing with these just as a sanity check. This helped me make changes more confidently as well as refactor code as needed while being able to run some quick regression tests to make sure everything was working as expected:
 
 `1.` Function `is_valid_range(from_date, to_date, can_be_in_the_future = False)`: Is the given date range a set of valid dates, by default they have to be in the past or historical dates, but for making future prediction the date range can be in the future<br>
 `2.` Function `def get_from_cache(symbol, from_date, to_date)`: Check for symbol and validate ranges to see if we have cached them already. Even invalid symbol calls to the API were cached so that we would not call invalid symbols for the purpose of regression testing more than once per run<br>
 `3.` Function `get_stock_history(symbol, from_date, to_date)`: This was the function that actually checked the cache and then called the Yahoo! Finance API to get historical data as needed<br>
-`4.` Class `TrainedModel`: At first this was a class I created to encapsulate and cache both the model as well as associated parameters like training and test dates, etc., but then I realized I could use this abstract base class to switch in and out the type of underlying machine learning model in the future<br> 
+`4.` Class `TrainedModel`: At first this was a class I created to encapsulate and cache both the model as well as associated parameters like training and test dates, etc., but then I realized I could use this abstract base class to switch in and out the type of underlying machine learning model in the future. This class defines the functions: `fit`, `predict`, and `evaluate_model`<br> 
+`5.` Class `TrainedModelLinear`: Child class of `TrainedModel` which uses `LinearRegression` to implement the price predictions<br>
+`6.` Function `GetTrainedModel(symbol, df_symbol, newFromDate, newToDate)`: Returns the concrete implemetation `TrainedModel` object to use<br>
+`7.` Function `are_valid_symbols(symbols)`: Determines if the given parameter is a valid list of stock symbol tickers and all the given symbols have corresponding trained models cached<br>
+`8.` Function evaluate_models(symbols): Iterates through a validated list of ticker symbols and calls the evaluate_model function for each corresponding `TrainedModel`<br>
+`9.` Function get_stock_histories(from_date, to_date, symbols, test_size, random_state): Iterates through a validated list of ticker symbols and calls `get_stock_history` for each then fits the corresponding `TrainedModel` object<br>
+`10.` Function `get_stock_predictions(from_date, to_date, symbols, max_days_to_predict)`: Iterates through a validated list of ticker symbols and makes predictions for the given date range<br>
+
+![Stock Market Deep Learning](https://delhitrainingcourses.com/blog/wp-content/uploads/2021/03/stock-market-deep-learning-min.jpeg)
+##### Source: "Stock Market Prediction using Deep Learning" at https://delhitrainingcourses.com/blog/stock-market-prediction-using-deep-learning/
+
+---
+### Test and Measure Performance: How Good Are The Predicitions?
+The `evaluate_model` function for class `TrainedModelLinear` predicts the accuracy of the model by taking the mean of the actual closing prices over the mean of the predicted closing prices as a percentage of accuracy, and because it is a linear model I also calculate the R-square score. 
+
+I trained the linear `TrainedModelLinear` for 2021 Tesla Motors (TSLA), Apple (AAPL), and Microsoft (MSFT). Then I trained the model for the first 9 months of the year 2021, and tested the last 3 months: 1 day, 7 days, 14 days, one month, and finally the last 3 months cummulative and saw the following results below.
+
+![Model Evaluation Across: Telsa, Apple, and Microsoft](https://user-images.githubusercontent.com/26253570/148699017-5b1ef6f7-a5c5-40fa-8a34-ff7590e70126.png)
+
+---
+I still see decent accuracy, close to 100 or a little over, meaning our predictions were still on the conservative side or a little lower than the actual price for all 3 names. However, notice that Tesla Motors (TSLA) is probably the most volative of the 3 Equity names as it has the highest error (MAE, MSE, and RMSE).
+
+### Refinement and Potential Improvements
+Although all 3 have a decent linear fit r-square scores relatively close to 1 and overall accuracy within 100. Definite room for improvement here, perhaps analysis of additional indicators that are specific to the stock in question to analyze the health of the underlying company ("P/E ratio or price-to-earnings ratio, P/B ratio or price-to-book ratio, liquidity ratios, debt ratios, Return ratios, Margins, etc.") or even additional models beyond a linear fit or the basic technical analysis being done here. There are other forms of analysis that include NLP or Natural Language Processing where I can evaluate news, tweets, and social media posts associated to the company, otherwise known as Sentiment Analysis.
+
+If we go with another model, notice that our code relies on a base class `TrainedModel` so that we could more easily swap out our `TrainedModelLinear` with say `TrainedModelLSTM` deep learning. From [Wikipedia: Long short-term memory](https://en.wikipedia.org/wiki/Long_short-term_memory):
+
+> Long short-term memory (LSTM) is an artificial recurrent neural network (RNN) architecture used in the field of deep learning. Unlike standard feedforward neural networks, LSTM has feedback connections. It can process not only single data points (such as images), but also entire sequences of data (such as speech or video). For example, LSTM is applicable to tasks such as unsegmented, connected handwriting recognition, speech recognition and anomaly detection in network traffic or IDSs (intrusion detection systems).
+
+Many of the existing Stock Predictor models I found online employ LSTM because of the sequential nature of the historical data.
+
+Sidebar: There were headlines around Sentiment Analysis where bots picked up news of a fictional character dying on a Peloton bike. This prompted a sell off of the company stock prompting analysts to ask where the trading bots and algorithms fooled into confusing news of a fictional character's death as real news or where they actually smarter than that and knew it was a fictional character but anticipated how this would affect the actual company's image: [Peloton stock slumps after morbid product placement in "Sex and the City"](https://www.cbsnews.com/news/peloton-stock-death-by-peloton-just-like-that-mr-big)
+
+> Shares of Peloton, the fitness equipment company, fell 11.3% Thursday — tumbling to a 19-month low — after a key character in HBO Max’s “Sex and the City” revival, “And Just Like That,” was shown dying of a heart attack after a 45-minute workout on one of the company’s exercise bikes.
+
+![Peloton Stock Price Plunge](https://s.yimg.com/uu/api/res/1.2/5NmDbiZfrZcB0BLoR3zQ2A--~B/Zmk9ZmlsbDtweW9mZj0wO3c9NjQwO2g9MzYwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/hd/cp-video-transcode/prod/2021-12/10/61b37cc424ffa931eb82cb23/61b38fcc78856f75e6071d4c_o_U_v5.jpg)
+##### Source: "Mr. Big gives Peloton stock a heart attack — investors flee" by Brian Sozzi at https://finance.yahoo.com/news/mr-big-gives-peloton-stock-a-heart-attack-investors-flee-182640731.html
+
+---
+### Content Based Recommendations
+
+I also wanted to make some stock recommendations based on content. Like for my previous Udacity project where I made recommendations based on IBM articles, but for our stock names. For example, you like Bitcon, perhaps you might like these other Crypto currency names that trade in the same price range, or perhaps you are interested in other tech sector names? So I downloaded data from [SwingTradeBot.com](https://swingtradebot.com/equities?min_vol=1000&min_price=10.0&max_price=999999.0&adx_trend=&grade=&include_etfs=2&html_button=as_html) that gives me some charateristics across equity stocks so I can build a recommendation engine across factors.
+
+But even though financial data is great for data science in that a lot of it is already numerical and great for modeling out of the gate, it is not so much for content recommendation. Like movies or IBM articles, numbers, prices, or trading volumes are not categories like genre, themes, or other related categories. Outside of the stock company industry or sector, for the numeric values I used the Pandas describe function to identify 25/50/75 percentiles to classify the numbers into binary columns or buckets, e.g. In25Pct_close_price, In50Pct_close_price, In75Pct_close_price, In100Pct_close_price, and we do this for volume, change in percent, days old, adx, ..., peg, eps, div_yield, and atr, etc.
+
+![Stock Prediction Charts](https://files.kstatecollegian.com/2018/04/StockPitch_Online-696x522.jpg)
+##### Source: "Wildcats of Wall Street: Students pitch stock recommendations for cash prizes" by Logan Reilly at https://www.kstatecollegian.com/2018/04/02/wildcats-of-wall-street-students-pitch-stock-recommendations-for-cash-prizes/
+
+---
+Wall Street analysts typically look at stocks within the same sector or industry, but to give my recommendation engine some novelty and potential serendipity, I built my recommendations to go across all sectors or industries and an option to only stick within similar sector/industry. I categorized the 13 unique sectors because the 113 unique industries is probably too many for now. Of the 13 there was one nan or NaN. I needed to account for this and simply created an 'Unknown' sector. So this plus the 25/50/75 percentiles columns left me with a 98 column matrix. I then reduced this to just the binary value columns so that I could use a dot matrix product to produce a "similarity" score for any combination of stocks. 
+
+![Stock Market Deep Learning](https://user-images.githubusercontent.com/26253570/148699756-a24c4961-ebaf-4437-b76e-d2f7f060476e.png)
+
+I created function called `make_content_recs(symbol, m=10, sort_by_sector_industry=False, df_cat_new=df_cat_new)`, by default for any given symbol it gives me the top 10 most similar stock symbols. I then ran the following tests, notice I ran Apple for both same and different sectors to see what kind of serendipitous stock recommendations we might get:
+
+```
+# test non-existent symbol
+print('*** ERROR does not exist: ZZVZT', make_content_recs('ZZVZT'))
+        
+# test existing symbol
+print('*** IBM:', make_content_recs('IBM'))
+# both by any sector and by related sector to get different results
+print('*** Apple any sector:', make_content_recs('AAPL'))
+print('*** Apple SAME sector:', make_content_recs('AAPL', 10, True))
+```
+And I got the following results:
+
+```
+*** ERROR does not exist: ZZVZT ("*** Symbol 'ZZVZT' does not exist", [], [])
+*** IBM: ('', ['AAPL', 'AMD', 'NVDA', 'BBIO', 'CCL', 'AMC', 'AVCT', 'BAC', 'AAL', 'BBD'], ['Apple Inc.', 'Advanced Micro Devices, Inc.', 'NVIDIA Corporation', 'BridgeBio Pharma, Inc.', 'Carnival Corporation', 'AMC Entertainment Holdings, Inc.', 'American Virtual Cloud Technologies, Inc.', 'Bank of America Corporation', 'American Airlines Group, Inc.', 'Banco Bradesco SA'])
+*** Apple any sector: ('', ['AMD', 'NVDA', 'BBIO', 'CCL', 'AMC', 'AVCT', 'BAC', 'AAL', 'BBD', 'TSLA'], ['Advanced Micro Devices, Inc.', 'NVIDIA Corporation', 'BridgeBio Pharma, Inc.', 'Carnival Corporation', 'AMC Entertainment Holdings, Inc.', 'American Virtual Cloud Technologies, Inc.', 'Bank of America Corporation', 'American Airlines Group, Inc.', 'Banco Bradesco SA', 'Tesla Motors, Inc.'])
+*** Apple SAME sector: ('', ['AMD', 'NVDA', 'FB', 'APPS', 'MSFT', 'ATVI', 'AEY', 'SQ', 'BB', 'AMAT'], ['Advanced Micro Devices, Inc.', 'NVIDIA Corporation', 'Facebook, Inc.', 'Digital Turbine, Inc.', 'Microsoft Corporation', 'Activision Blizzard, Inc', 'ADDvantage Technologies Group, Inc.', 'Block, Inc', 'BlackBerry Ltd', 'Applied Materials, Inc.'])
+```
+
+#### How I would improve the content based recommendation system? 
+Notice that even though I was looking at two technology stocks: IBM and Apple, the recommendation engine actually gave me some symbols or names not in the technology sector: a pharma BridgeBio Pharma, Inc., a leisure and travel one Carnival Corporation, an entertainment one AMC, and even a bank Bank of America Corporation. But how to measure and improve my recommendations? I could compare against what other online recommendation engines make. Sites like [seekingaplha.com](https://seekingalpha.com) will provide stock recommendations by sector but that comes at a premium. In fact, I would be hard pressed to find anything online that will give me these types of recommendations for free. At best, for a stock like Apple, I can find some online articles or sites (https://www.tipranks.com, https://finance.yahoo.com, or https://marketchameleon.com) that recommend similar symbols and I can see AMD, NVDA, TSLA, amongst others also appear in these type of recommendations. But this is just a small sample of data and not enough to tell us how precise my picks are. So this evaluation is left as a potential future exercise, at best.
+
+For the classic "cold start" problem with the content-recommendation engine I would probably fall back to top volume traded or sort by VWAP (Volume Weighted Average Price) to sort by best value. I created a second function `get_top_stocks(m=10, sector='', df_cat_new=df_cat_new)` for cold starts. Then I ran the following tests:
+
+```
+# make recommendations for a brand new user no stock picked yet...just return the top volume stocks
+print ('Top 10:', get_top_stocks(10))
+
+# Test a bad sector
+print ('XYZ', get_top_stocks(10, 'XYZ'))
+
+# Get top Healthcare stocks
+print ('Healthcare', get_top_stocks(10, 'Healthcare'))
+```
+This gave me the following results:
+```
+Top 10: ('', ['AAPL', 'AMD', 'NVDA', 'BBIO', 'CCL', 'AMC', 'AVCT', 'BAC', 'AAL', 'BBD'], ['Apple Inc.', 'Advanced Micro Devices, Inc.', 'NVIDIA Corporation', 'BridgeBio Pharma, Inc.', 'Carnival Corporation', 'AMC Entertainment Holdings, Inc.', 'American Virtual Cloud Technologies, Inc.', 'Bank of America Corporation', 'American Airlines Group, Inc.', 'Banco Bradesco SA'])
+XYZ ("Sector 'XYZ' does not exist, try one of ['Healthcare' 'Basic Materials' 'Other' 'Unknown' 'Consumer Defensive'\n 'Financial Services' 'Industrials' 'Technology' 'Consumer Cyclical'\n 'Real Estate' 'Communication Services' 'Energy' 'Utilities']", [], [])
+Healthcare ('', ['BBIO', 'BFRI', 'NVAX', 'MRNA', 'ALLK', 'ARDX', 'AKBA', 'MDT', 'BSX', 'BMY'], ['BridgeBio Pharma, Inc.', 'Biofrontera Inc.', 'Novavax, Inc.', 'Moderna, Inc.', 'Allakos Inc.', 'Ardelyx, Inc.', 'Akebia Therapeutics, Inc.', 'Medtronic Inc.', 'Boston Scientific Corporation', 'Bristol-Myers Squibb Company'])
+```
+
+![Top 12 Tech Stocks for 2022](https://mediacloud.kiplinger.com/image/private/s--UMgGGBZF--/f_auto,t_primary-image-desktop@1/v1641238782/Investing/best-tech-stocks-2022.jpg)
+##### Source: "The 12 Best Tech Stocks to Buy for 2022 by Tom Taulli at https://www.kiplinger.com/investing/stocks/tech-stocks/604016/the-12-best-tech-stocks-to-buy-for-2022
+
+---
+### Summary
+We explored the Yahoo! Finance historical trading data including using the Yahoo! Finance API to get live historical data. We also loaded well known financial indicator data, did some analysis and clean up of this data, and showed there was not enough significant correlation to our pricing models to warrant their use. So although we disproved our initial assumption that this financial indicator would help us in predicting closing prices, this meant that our model was a little easier to implement. We then created a Stock Predictor to predict Adjusted Closing prices based on previous day's closing data, and finally created a Content-Based Recommendation Engine to suggest similar Stocks based on most similiar Stock attributes for a given Stock.
+
+### Conclusion
+
+#### Reflection
+This was a very fun project for me. Being able to choose a subject matter that I both find interesting and familiar, yet looking at it with a Data Science lens, made this work fascinating to me. It was a great opportunity to apply everything I learned and showcase how it could be applied to a real world problem and one that is close to home. The hardest part was to stop adding extra work. I probably could have kept working on this, thinking of new ways to model and test this. By far the best project in the Udacity program.
+
+We now have the code basis for deploying a web application that will both showcase our Stock Predictor for Adjusted Closing price and our Content-Based Recommendation Engine. This way I can reach a wider audience. The results of this Jupyter Notebook will be saved to an html file below:

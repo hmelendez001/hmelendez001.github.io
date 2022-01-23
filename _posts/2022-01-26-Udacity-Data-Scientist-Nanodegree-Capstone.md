@@ -6,8 +6,8 @@ Investment firms, hedge funds, and even individuals or day traders have been usi
 
 > only 10% of trading volume now comes from human discretionary investors, per data from JPMorgan Chase & Co. (JPM) cited by Bloomberg
 
-![Crypto Trading Robot Image](https://insidebitcoins.com/wp-content/uploads/2020/05/automated_forex_robot-1200x900-1-768x576.jpg)
-##### Source: "Best Forex Robots 2021" by Kane Pepi at https://insidebitcoins.com/forex-robot
+![Crypto Trading Robot Image](http://ai-marketers.com/wp-content/uploads/2019/09/canstockphoto24627083.jpg)
+##### Source: "AI Stock Market Forecast" by Gord at http://ai-marketers.com/ai-stock-market-forecast/
 
 ---
 ### Problem Statement
@@ -177,6 +177,9 @@ If we go with another model, notice that our code relies on a base class `Traine
 > Long short-term memory (LSTM) is an artificial recurrent neural network (RNN) architecture used in the field of deep learning. Unlike standard feedforward neural networks, LSTM has feedback connections. It can process not only single data points (such as images), but also entire sequences of data (such as speech or video). For example, LSTM is applicable to tasks such as unsegmented, connected handwriting recognition, speech recognition and anomaly detection in network traffic or IDSs (intrusion detection systems).
 
 Many of the existing Stock Predictor models I found online employ LSTM because of the sequential nature of the historical data.
+
+![LTSM Stock Predictor](https://miro.medium.com/max/1400/1*opzxrBna63YDbd8_pM5trw.png)
+##### Source: "Stock price prediction using LSTM (Long Short-Term Memory)" by Thenuja Shanthacumaran at https://medium.com/analytics-vidhya/stock-price-prediction-using-lstm-long-short-term-memory-e8c125a853e4
 
 Sidebar: There were headlines around Sentiment Analysis where bots picked up news of a fictional character dying on a Peloton bike. This prompted a sell off of the company stock prompting analysts to ask where the trading bots and algorithms fooled into confusing news of a fictional character's death as real news or where they actually smarter than that and knew it was a fictional character but anticipated how this would affect the actual company's image: [Peloton stock slumps after morbid product placement in "Sex and the City"](https://www.cbsnews.com/news/peloton-stock-death-by-peloton-just-like-that-mr-big)
 

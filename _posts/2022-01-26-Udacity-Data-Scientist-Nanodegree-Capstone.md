@@ -6,8 +6,8 @@ Investment firms, hedge funds, and even individuals or day traders have been usi
 
 > only 10% of trading volume now comes from human discretionary investors, per data from JPMorgan Chase & Co. (JPM) cited by Bloomberg
 
-![Crypto Trading Robot Image](http://ai-marketers.com/wp-content/uploads/2019/09/canstockphoto24627083.jpg)
-##### Source: "AI Stock Market Forecast" by Gord at http://ai-marketers.com/ai-stock-market-forecast/
+![Crypto Trading Robot Image](https://www.influencive.com/wp-content/uploads/2021/04/CryptoTrading-Bots-758x511.png)
+##### Source: "29 Best Crypto Trading Bots on the Market" by FRED at https://www.influencive.com/29-best-crypto-trading-bots-on-the-market/
 
 ---
 ### Problem Statement

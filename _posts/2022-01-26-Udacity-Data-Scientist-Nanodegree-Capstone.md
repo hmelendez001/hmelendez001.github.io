@@ -260,6 +260,9 @@ This was a very fun project for me. Being able to choose a subject matter that I
 
 This being the Data Science final Capstone Project, I completed the nanodegree. Udacity even provided a "graduation ceremony" video at the end of the program, with [Sebastian Thrun](https://www.linkedin.com/in/sebastian-thrun-59a0b273/) as the "commencement speaker." He said before the self-driving car problem was solved, and everyone had all but given up on solving it, Google told him: tell us why technically it's not possible to do it. When he could not come back with a logical, technical reason why a self-driving car could not negotiate the public roads, he was renewed for the challenge to ultimately sove the problem. And the rest is [Google autonomous car history](https://www.ted.com/talks/sebastian_thrun_google_s_driverless_car?language=en).
 
+![Google Self-Driving Car Launched in 2015](https://a.scpr.org/i/41a146393791de83a04a8e83fa197bb3/83369-full.jpg)
+##### Source: "Google's new self-driving cars cruising Silicon Valley roads by Michael Liedtke at https://archive.kpcc.org/news/2015/06/25/52700/googles-new-self-driving-cars-cruising-silicon-val
+
 Since I have the code basis for deploying a web application that will both showcase our Stock Predictor for Adjusted Closing price and our Content-Based Recommendation Engine, I went ahead and did that. This way I can reach a wider audience. So here is my final web application: https://helderstockpredictor.herokuapp.com. Other than the last week of January 2022 when the market went sideways the predictions have been very close with R² close to 1.00. But that is why this was purely an academic exercise. I'll leave the trading decisions to the experts. I'll continue with my data science now.
 
 ![Helder's Stock Predictor Web App](https://user-images.githubusercontent.com/26253570/150998912-7f894dfe-f9cc-4402-af6f-f4b6ec4ba6ec.png)

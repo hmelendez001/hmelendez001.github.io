@@ -258,4 +258,13 @@ We explored the Yahoo! Finance historical trading data including using the Yahoo
 #### Reflection
 This was a very fun project for me. Being able to choose a subject matter that I both find interesting and familiar, yet looking at it with a Data Science lens, made this work fascinating to me. It was a great opportunity to apply everything I learned and showcase how it could be applied to a real world problem and one that is close to home. The hardest part was to stop adding extra work. I probably could have kept working on this, thinking of new ways to model and test this. By far the best project in the Udacity program.
 
-We now have the code basis for deploying a web application that will both showcase our Stock Predictor for Adjusted Closing price and our Content-Based Recommendation Engine. This way I can reach a wider audience. The results of this Jupyter Notebook will be saved to an html file below:
+Udacity even provided a "graduation ceremony" video at the end of the program, with 
+
+Since I have the code basis for deploying a web application that will both showcase our Stock Predictor for Adjusted Closing price and our Content-Based Recommendation Engine, I went ahead and did that. This way I can reach a wider audience. So here is my final web application: https://helderstockpredictor.herokuapp.com. Other than the last week of January 2022 when the market went sideways the predictions have been very close with R² close to 1.00. But that is why this was purely an academic exercise. I'll leave the trading decisions to the experts. I'll continue with my data science now.
+
+![Helder's Stock Predictor Web App](https://user-images.githubusercontent.com/26253570/150998912-7f894dfe-f9cc-4402-af6f-f4b6ec4ba6ec.png)
+
+And of course, below is [my "diploma" for completing the Data Scientist Nanodegree Program](https://confirm.udacity.com/WKHPMPA2). Happy Wrangling!
+
+![Helder's Nanodegree Data Science Diploka](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/59cca539-6553-4403-85cb-4d63be0101a2.svg)
+

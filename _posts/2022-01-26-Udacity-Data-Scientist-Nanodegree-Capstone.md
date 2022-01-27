@@ -82,7 +82,7 @@ df = pd.read_csv('data/Global_Mobility_Report.csv')
 df.head()
 ```
 
-The I noticed it was as expected but more than US national numbers: US state numbers. And more than just 2021. So, I took just the data I needed from this data frame and wrote it out for later use:
+Then I noticed it was as expected, but more than US national numbers: US state numbers. And more than just 2021. So, I took just the data I needed from this data frame and wrote it out for later use:
 
 ```
 df_us = df[(df['country_region_code'] == 'US') & (df['date'] >= '2021-01-01')]
@@ -151,8 +151,8 @@ First, I created some helper functions and classes that would be needed for vali
 `5.` Class `TrainedModelLinear`: Child class of `TrainedModel` which uses `LinearRegression` to implement the price predictions<br>
 `6.` Function `GetTrainedModel(symbol, df_symbol, newFromDate, newToDate)`: Returns the concrete implementation `TrainedModel` object to use<br>
 `7.` Function `are_valid_symbols(symbols)`: Determines if the given parameter is a valid list of stock symbol tickers and all the given symbols have corresponding trained models cached<br>
-`8.` Function evaluate_models(symbols): Iterates through a validated list of ticker symbols and calls the evaluate_model function for each corresponding `TrainedModel`<br>
-`9.` Function get_stock_histories(from_date, to_date, symbols, test_size, random_state): Iterates through a validated list of ticker symbols and calls `get_stock_history` for each then fits the corresponding `TrainedModel` object<br>
+`8.` Function `evaluate_models(symbols)`: Iterates through a validated list of ticker symbols and calls the evaluate_model function for each corresponding `TrainedModel`<br>
+`9.` Function `get_stock_histories(from_date, to_date, symbols, test_size, random_state)`: Iterates through a validated list of ticker symbols and calls `get_stock_history` for each then fits the corresponding `TrainedModel` object<br>
 `10.` Function `get_stock_predictions(from_date, to_date, symbols, max_days_to_predict)`: Iterates through a validated list of ticker symbols and makes predictions for the given date range<br>
 
 ![Stock Market Deep Learning](https://delhitrainingcourses.com/blog/wp-content/uploads/2021/03/stock-market-deep-learning-min.jpeg)
@@ -167,10 +167,10 @@ I trained the linear `TrainedModelLinear` for 2021 Tesla Motors (TSLA), Apple (A
 ![Model Evaluation Across: Telsa, Apple, and Microsoft](https://user-images.githubusercontent.com/26253570/148699017-5b1ef6f7-a5c5-40fa-8a34-ff7590e70126.png)
 
 ---
-I still see decent accuracy, close to 100 or a little over, meaning our predictions were still on the conservative side or a little lower than the actual price for all 3 names. However, notice that Tesla Motors (TSLA) is probably the most volatile of the 3 Equity names as it has the highest error (MAE, MSE, and RMSE).
+I still see promising accuracy, close to 100 or a little over, meaning our predictions were still on the conservative side or a little lower than the actual price for all 3 names. However, notice that Tesla Motors (TSLA) is probably the most volatile of the 3 Equity names as it has the highest error (MAE, MSE, and RMSE).
 
 ### Refinement and Potential Improvements
-Although all 3 have a decent linear fit r-square scores relatively close to 1 and overall accuracy within 100. Definite room for improvement here, perhaps analysis of additional indicators that are specific to the stock in question to analyze the health of the underlying company ("P/E ratio or price-to-earnings ratio, P/B ratio or price-to-book ratio, liquidity ratios, debt ratios, return ratios, Margins, etc.") or even additional models beyond a linear fit or the basic technical analysis being done here. There are other forms of analysis that include NLP or Natural Language Processing where I can evaluate news, tweets, and social media posts associated to the company, otherwise known as Sentiment Analysis.
+Although all 3 have a good linear fit, R-square scores relatively close to 1, and overall accuracy within 100, there is definite room for improvement here. Perhaps analysis of additional indicators that are specific to the stock in question to analyze the health of the underlying company ("P/E ratio or price-to-earnings ratio, P/B ratio or price-to-book ratio, liquidity ratios, debt ratios, return ratios, Margins, etc.") or even additional models beyond a linear fit or the basic technical analysis being done here. There are other forms of analysis that include NLP or Natural Language Processing where I can evaluate news, tweets, and social media posts associated to the company, otherwise known as Sentiment Analysis.
 
 If we go with another model, notice that our code relies on a base class `TrainedModel` so that we could more easily swap out our `TrainedModelLinear` with say `TrainedModelLSTM` deep learning. From [Wikipedia: Long short-term memory](https://en.wikipedia.org/wiki/Long_short-term_memory):
 
@@ -203,7 +203,7 @@ Wall Street analysts typically look at stocks within the same sector or industry
 
 ![Stock Market Deep Learning](https://user-images.githubusercontent.com/26253570/148699756-a24c4961-ebaf-4437-b76e-d2f7f060476e.png)
 
-I created function called `make_content_recs(symbol, m=10, sort_by_sector_industry=False, df_cat_new=df_cat_new)`, by default for any given symbol it gives me the top 10 most similar stock symbols. I then ran the following tests: notice I ran Apple stock for both same and different sectors to see what kind of serendipitous stock recommendations we might get:
+I created a function called `make_content_recs(symbol, m=10, sort_by_sector_industry=False, df_cat_new=df_cat_new)`, by default for any given symbol it gives me the top 10 most similar stock symbols. I then ran the following tests: notice I ran Apple stock for both same and different sectors to see what kind of serendipitous stock recommendations we might get:
 
 ```
 # test non-existent symbol
@@ -251,7 +251,7 @@ Healthcare ('', ['BBIO', 'BFRI', 'NVAX', 'MRNA', 'ALLK', 'ARDX', 'AKBA', 'MDT', 
 
 ---
 ### Summary
-We explored the Yahoo! Finance historical trading data including using the Yahoo! Finance API to get live historical data. We also loaded well known financial indicator data, did some analysis and clean-up of this data, and showed there was not enough significant correlation to our pricing models to warrant their use. So, although we disproved our initial assumption that this financial indicator would help us in predicting closing prices, this meant that our model was a little easier to implement. We then created a Stock Predictor to predict Adjusted Closing prices based on previous day's closing data, and finally created a Content-Based Recommendation Engine to suggest similar Stocks based on most similar Stock attributes for a given Stock.
+I explored the Yahoo! Finance historical trading data including using the Yahoo! Finance API to get live historical data. We also loaded well known financial indicator data, did some analysis and clean-up of this data, and showed there was not enough significant correlation to our pricing models to warrant their use. So, although I disproved my initial assumption that this financial indicator would help me in predicting closing prices, this meant the model was a little easier to implement. I then created a Stock Predictor to predict Adjusted Closing prices based on previous day's closing data, and finally created a Content-Based Recommendation Engine to suggest similar Stocks based on most similar Stock attributes for a given Stock.
 
 ### Conclusion
 

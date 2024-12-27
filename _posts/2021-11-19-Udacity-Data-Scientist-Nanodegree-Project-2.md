@@ -20,15 +20,15 @@ This project involves a Disaster Response Pipeline dashboard web application sho
 * Deployment of our web application showing our Disaster Response Pipeline visualizations
 
 ---
-<img src='https://media.gettyimages.com/photos/silhouette-helicopter-extinguishing-forest-fire-while-flying-over-picture-id667761533?s=2048x2048'>
-Source: Getty Images by Juan Sebastian Cuellar Rodriguez / EyeEm
+<img src='https://ww2.arb.ca.gov/sites/default/files/styles/list/public/images/iStock-836660398.jpg'>
+Source: California Air Resources Board https://ww2.arb.ca.gov/our-work/topics/smoke
 
 ---
 ### What Exactly is This Project?
 This project was a full stack end to end development effort. I took two raw CSV files, one containing the raw messages and corresponding English translations, and the second CSV file containing the categories that Figure Eight originally generated. Remember, Machine Learning is about "training" your model or telling it "here are the questions **and** answers for you to 'learn.' Use part of the data to 'lean' and take the remaining data to test how effective your 'learning' was." I took the model I developed and evaluated to showcase it in a web application. This web application allows users to input text messages that allow the model to predict what emergency response categories the message would trigger, if any. There were 3 major Python scripts that were developed as described below.
 
-<img src='https://media.gettyimages.com/photos/rotating-mesocyclone-storm-works-its-way-across-the-great-plains-of-picture-id614939260?s=2048x2048'>
-Source: Getty Images by John Finney
+<img src='https://cdn.shopify.com/s/files/1/0275/2862/6224/files/when_is_tornado_season_in_the_US_600x600.png'>
+Source: When Is Tornado Season in the US? How to Keep Your Family Safe https://preparedhero.com/blogs/articles/tornado-season
 
 ---
 #### ETL Pipeline
@@ -45,8 +45,8 @@ Learning about NLP or Natural Language Processing was the most interesting part 
 
 Another interesting functionality NLTK offers is the ability to break down text into parts of speech. This is useful for understanding context in a sentence, e.g., the archer took the shot with the _bow_ and then took a _bow_. NTLK can help us distinguish the parts of speech by tagging the first transitive verb _shoot/shot with the bow_ from the intransitive verb _took/take a bow_.
 
-<img src='https://nerdreactor.com/wp-content/uploads/2017/07/jeremy-renner-hawkeye-800x424.jpg'>
-Source: Jeremy Renner broke both arms during movie stunt from https://nerdreactor.com/2017/07/07/jeremy-renner-broke-arms-movie-stunt/
+<img src='https://media1.popsugar-assets.com/files/thumbor/K4HVnqWFAfWqkJvGBuJ4W_4K9Nc=/fit-in/1584x1056/top/filters:format_auto():upscale()/2021/07/26/775/n/37139775/68351883a4670cef_GettyImages-1163949439.jpg'>
+Source: Valentina Acosta, Archery: These 9 Latinas Competing at the 2021 Tokyo Olympics Are Forging New Paths from https://nerdreactor.com/2017/07/07/jeremy-renner-broke-arms-movie-stunt/
 <p/>
 
 ---
@@ -76,8 +76,8 @@ I also reported the model's F-score, again best defined by [Wikipedia](https://e
 
 And using a Python module known as "pickle" we were able to store our model in a file that could be read and used by others, mainly by our web application.
 
-<img src='https://media.gettyimages.com/photos/hurricane-winds-knock-down-an-oak-tree-picture-id847689834?s=2048x2048'>
-Source: Getty Images by John Coletti
+<img src='https://activerain-store.s3.amazonaws.com/image_store/uploads/2/2/2/2/7/ar121877137872222.jpg'>
+Source: Hurricane Charlie's visit to Port Charlotte, FL Friday August 13, 2004 https://activerain.com/blogsview/642278/hurricane-charlie-s-visit-to-port-charlotte--fl-friday-august-13--2004
 
 ---
 #### Web Application Dashboard
@@ -85,8 +85,8 @@ The 3rd and final major Python script for this project involved the resulting we
 
 The web application plots two visualization to show the user the makeup of the underlying model training and test data. It also allows the user to input any text message to see how the machine learning model "categorizes" the message or returns what emergency service category or categories the message would be flagged for. Again, keep in mind the model is currently optimized at only about 60% or so of accuracy.
 
-<img src='https://media.gettyimages.com/photos/flood-picture-id184878691?s=2048x2048'>
-Source: Getty Images by gdagys
+<img src='https://i.cbc.ca/1.4266361.1504007692!/cpImage/httpImage/image.jpg_gen/derivatives/16x9_1180/harvey-flood-insurance.jpg'>
+Source: Why governments miscalculate your risk of flooding https://www.cbc.ca/news/science/flood-maps-climate-change-1.4281642
 
 ---
 ### Conclusion

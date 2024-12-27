@@ -85,8 +85,8 @@ The 3rd and final major Python script for this project involved the resulting we
 
 The web application plots two visualization to show the user the makeup of the underlying model training and test data. It also allows the user to input any text message to see how the machine learning model "categorizes" the message or returns what emergency service category or categories the message would be flagged for. Again, keep in mind the model is currently optimized at only about 60% or so of accuracy.
 
-<img src='https://i.cbc.ca/1.4266361.1504007692!/cpImage/httpImage/image.jpg_gen/derivatives/16x9_1180/harvey-flood-insurance.jpg'>
-Source: Why governments miscalculate your risk of flooding https://www.cbc.ca/news/science/flood-maps-climate-change-1.4281642
+<img src='https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/D6C1/production/_109577945_mediaitem109577944.jpg.webp'>
+Source: bbc.co.uk Flooding: Have you been affected? https://www.bbc.co.uk/newsround/50347521
 
 ---
 ### Conclusion

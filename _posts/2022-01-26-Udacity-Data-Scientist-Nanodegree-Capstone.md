@@ -155,8 +155,8 @@ First, I created some helper functions and classes that would be needed for vali
 `9.` Function `get_stock_histories(from_date, to_date, symbols, test_size, random_state)`: Iterates through a validated list of ticker symbols and calls `get_stock_history` for each then fits the corresponding `TrainedModel` object<br>
 `10.` Function `get_stock_predictions(from_date, to_date, symbols, max_days_to_predict)`: Iterates through a validated list of ticker symbols and makes predictions for the given date range<br>
 
-![Stock Market Deep Learning](https://delhitrainingcourses.com/blog/wp-content/uploads/2021/03/stock-market-deep-learning-min.jpeg)
-##### Source: "Stock Market Prediction using Deep Learning" at https://delhitrainingcourses.com/blog/stock-market-prediction-using-deep-learning/
+![Stock Market Deep Learning](https://miro.medium.com/v2/resize:fit:720/format:webp/1*oVsvog1FPoig-lG4RJzN-A.png)
+##### Source: "Stock Market Prediction using Deep Learning" at https://kingsubham27.medium.com/stock-market-prediction-using-deep-learning-b71ae6fea740
 
 ---
 ### Test and Measure Performance: How Good Are the Predictions?
@@ -195,8 +195,8 @@ I also wanted to make some stock recommendations based on content. Like for my p
 
 But even though financial data is great for data science in that a lot of it is already numerical and great for modeling out of the gate, it is not so much for content recommendation. Like movies or IBM articles, numbers, prices, or trading volumes are not categories like genre, themes, or other related categories. Outside of the stock company industry or sector, for the numeric values I used the Pandas describe function to identify 25/50/75 percentiles to classify the numbers into binary columns or buckets, e.g. In25Pct_close_price, In50Pct_close_price, In75Pct_close_price, In100Pct_close_price, and we do this for volume, change in percent, days old, adx, ..., peg, eps, div_yield, and atr, etc.
 
-![Stock Prediction Charts](https://files.kstatecollegian.com/2018/04/StockPitch_Online-696x522.jpg)
-##### Source: "Wildcats of Wall Street: Students pitch stock recommendations for cash prizes" by Logan Reilly at https://www.kstatecollegian.com/2018/04/02/wildcats-of-wall-street-students-pitch-stock-recommendations-for-cash-prizes/
+![Stock Prediction Charts](https://m.foolcdn.com/media/dubs/images/Investing_dice_buy_sell.original.jpg)
+##### Source: "50 Everyday Costs You're Overlooking That Are Adding Up" by Selena Maranjian at https://kingsubham27.medium.com/stock-market-prediction-using-deep-learning-b71ae6fea740
 
 ---
 Wall Street analysts typically look at stocks within the same sector or industry, but to give my recommendation engine some novelty and potential serendipity, I built my recommendations to go across all sectors or industries and an option to only stick within similar sector/industry. I categorized the 13 unique sectors because the 113 unique industries are probably too many for now. Of the 13 there was one nan or NaN. I needed to account for this and simply created an 'Unknown' sector. So, this plus the 25/50/75 percentiles columns left me with a 98-column matrix. I then reduced this to just the binary value columns so that I could use a dot matrix product to produce a "similarity" score for any combination of stocks. 
@@ -246,8 +246,8 @@ XYZ ("Sector 'XYZ' does not exist, try one of ['Healthcare' 'Basic Materials' 'O
 Healthcare ('', ['BBIO', 'BFRI', 'NVAX', 'MRNA', 'ALLK', 'ARDX', 'AKBA', 'MDT', 'BSX', 'BMY'], ['BridgeBio Pharma, Inc.', 'Biofrontera Inc.', 'Novavax, Inc.', 'Moderna, Inc.', 'Allakos Inc.', 'Ardelyx, Inc.', 'Akebia Therapeutics, Inc.', 'Medtronic Inc.', 'Boston Scientific Corporation', 'Bristol-Myers Squibb Company'])
 ```
 
-![Top 12 Tech Stocks for 2022](https://mediacloud.kiplinger.com/image/private/s--UMgGGBZF--/f_auto,t_primary-image-desktop@1/v1641238782/Investing/best-tech-stocks-2022.jpg)
-##### Source: "The 12 Best Tech Stocks to Buy for 2022 by Tom Taulli at https://www.kiplinger.com/investing/stocks/tech-stocks/604016/the-12-best-tech-stocks-to-buy-for-2022
+![Top 12 Tech Stocks for 2022](https://www.zenectwealth.com/wp-content/uploads/2021/12/stock-chart.jpg)
+##### Source: "Best Tech Stocks To Buy Right Now? 5 To Watch by Amos C at https://www.zenectwealth.com/best-tech-stocks-to-buy-right-now-5-to-watch/
 
 ---
 ### Summary

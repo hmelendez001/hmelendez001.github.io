@@ -3,3 +3,9 @@ As part of the udacity.com Data Scientist nanodegree, this is a blog to document
 
 The template for creating this blog in GitHub can be found here: https://github.com/chadbaldwin/simple-blog-bootstrap/generate
 The instructions for creating this can be found here: https://chadbaldwin.net/2021/03/14/how-to-build-a-sql-blog.html
+
+**The resulting website may be found at**: [https://hmelendez001.github.io](https://hmelendez001.github.io)
+
+---
+
+<img width="790" height="781" alt="Image" src="https://github.com/user-attachments/assets/46b5b737-d846-4c0e-9942-343997f62da3" />
